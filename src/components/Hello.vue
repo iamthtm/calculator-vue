@@ -2,21 +2,25 @@
   <div id="app">
     <!-- <img class="logo" src="./assets/logo.png">
     <ttt></ttt> -->
-    <button @click="add(1)">1</button>
-    <button @click="add(2)">2</button>
-    <button @click="add(3)">3</button>
-    <button @click="add(4)">4</button>
-    <button @click="add(5)">5</button>
-    <button @click="add(6)">6</button>
+    <br> {{ num1 }} {{ operation }} {{ num2 }} = {{ sum }}
+    <hr>
     <button @click="add(7)">7</button>
     <button @click="add(8)">8</button>
     <button @click="add(9)">9</button>
+    <button @click="hard()">/</button><br>
+    <button @click="add(4)">4</button>
+    <button @click="add(5)">5</button>
+    <button @click="add(6)">6</button>
+    <button @click="kun()">x</button><br>
+    <button @click="add(1)">1</button>
+    <button @click="add(2)">2</button>
+    <button @click="add(3)">3</button>
+    <button @click="del()">-</button><br>
     <button @click="add(0)">0</button>
-    <button @click="buk()">+</button>
-    <button @click="del()">-</button>
     <button @click="total()">=</button>
     <button @click="clear()">C</button>
-    <br> {{ num1 }} {{ operation }} {{ num2 }} = {{ sum }}
+    <button @click="buk()">+</button>
+
   </div>
 </template>
 
@@ -45,18 +49,30 @@ export default {
       this.pass = true
       this.operation = '-'
     },
+    kun: function () {
+      this.pass = true
+      this.operation = 'x'
+    },
+    hard: function () {
+      this.pass = true
+      this.operation = '/'
+    },
     total: function () {
       // this.sum = this.num1 + this.num2
       if (this.operation === '+') {
         this.sum = parseInt(this.num1) + parseInt(this.num2)
       } else if (this.operation === '-') {
         this.sum = parseInt(this.num1) - parseInt(this.num2)
+      } else if (this.operation === 'x') {
+        this.sum = parseInt(this.num1) * parseInt(this.num2)
+      } else if (this.operation === '/') {
+        this.sum = parseInt(this.num1) / parseInt(this.num2)
       }
     },
     clear: function () {
-      this.num1 = 0
-      this.num2 = 0
-      this.sum = 0
+      this.num1 = ''
+      this.num2 = ''
+      this.sum = ''
       this.pass = false
       this.operation = ''
     }
